@@ -32,19 +32,19 @@ MyTasksApp es una aplicación de gestión de tareas diarias desarrollada con Ang
 Clona este repositorio:
 
 ```bash
-  git clone https://github.com/JorgeLuisV/myTasksAppAngular.git
+git clone https://github.com/JorgeLuisV/myTasksAppAngular.git
 ```
 
 Navega al directorio del proyecto:
 
 ```bash
-  cd myTasksAppAngular
+cd myTasksAppAngular
 ```
 
 Instala las dependencias:
 
 ```bash
-  npm install
+npm install
 ```
 
 ## Uso
@@ -52,7 +52,7 @@ Instala las dependencias:
 Inicia la aplicación:
 
 ```bash
-  ng serve
+ng serve
 ```
 
 Abre tu navegador y ve a `http://localhost:4200`
