@@ -32,7 +32,7 @@ MyTasksApp es una aplicación de gestión de tareas diarias desarrollada con Ang
 Clona este repositorio:
 
 ```bash
-  git clone https://github.com/tu-usuario/myTasksAppAngular.git
+  git clone https://github.com/JorgeLuisV/myTasksAppAngular.git
 ```
 
 Navega al directorio del proyecto:
