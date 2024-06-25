@@ -1,0 +1,57 @@
+@mixin cwidths {
+  width: 100%;
+  max-width: 520px;
+}
+
+.home-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include cwidths;
+}
+
+.login-card {
+  padding: 10px;
+  @include cwidths;
+}
+
+.tasks-header {
+  margin-top: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5em;
+}
+
+.tasks-container {
+  max-height: 66vh;
+  overflow-y: auto;
+}
+
+:host ::ng-deep .custom-button-toggle {
+  font-size: 13px;
+
+  .mat-button-toggle-label-content {
+    line-height: 36px;
+  }
+}
+
+/* Responsive */
+
+@media (min-width: 600px) and (max-width: 960px) {
+  .login-card {
+    padding: 15px;
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1280px) {
+  .login-card {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .login-card {
+    padding: 25px;
+  }
+}

@@ -1,0 +1,15 @@
+<button
+  [type]="typeBtn"
+  [disabled]="disabled || loading"
+  class="app-btn"
+  [ngClass]="{
+    'primary-color': color === 'primary',
+    logout: color === 'logout',
+    'full-width': fullWidth
+  }"
+  mat-flat-button
+>
+  @if (loading) {
+  <fa-icon class="mr-2" [icon]="faSpinner" [pulse]="true"></fa-icon>
+  } {{ text }}
+</button>

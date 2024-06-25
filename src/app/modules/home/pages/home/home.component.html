@@ -1,0 +1,71 @@
+<div class="login-container">
+  <div class="home-header">
+    <div class="logo-container">
+      <img
+        class="logo"
+        src="../../../assets/images/mytasksapp.png"
+        alt="logo de mytasksapp"
+      />
+      <h1>MyTaskApp</h1>
+    </div>
+    <app-button
+      typeBtn="button"
+      [color]="'logout'"
+      [text]="'Salir'"
+      (click)="logout()"
+    ></app-button>
+  </div>
+
+  <mat-card class="login-card" appearance="raised">
+    <mat-card-content>
+      <app-button
+        typeBtn="button"
+        [color]="'primary'"
+        [fullWidth]="true"
+        [text]="'Nueva tarea'"
+        (click)="openDialog()"
+      ></app-button>
+      <div class="tasks-header">
+        <mat-card-title>Mis tareas</mat-card-title>
+        <mat-button-toggle-group
+          name="fontStyle"
+          aria-label="Font Style"
+          [value]="'all'"
+        >
+          <mat-button-toggle
+            value="all"
+            class="custom-button-toggle"
+            (click)="setFilter('all')"
+            >Todas</mat-button-toggle
+          >
+          <mat-button-toggle
+            value="pending"
+            class="custom-button-toggle"
+            (click)="setFilter('pending')"
+            >Pendientes</mat-button-toggle
+          >
+          <mat-button-toggle
+            value="completed"
+            class="custom-button-toggle"
+            (click)="setFilter('completed')"
+            >Completadas</mat-button-toggle
+          >
+        </mat-button-toggle-group>
+      </div>
+      <div class="tasks-container">
+        @if (status === 'loading') {
+        <div class="loading-container">
+          <fa-icon [icon]="faSpinner" [pulse]="true"></fa-icon> Cargando
+        </div>
+        } @if (status === 'success' && tasksByFilter().length > 0) { @for (task
+        of tasksByFilter(); track $index) {
+        <app-task [task]="task"></app-task>
+        } } @else if (status === 'success' && tasksByFilter().length === 0) {
+        <div class="loading-container">
+          <fa-icon [icon]="faClipboardCheck"></fa-icon> Crea una nueva tarea
+        </div>
+        }
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

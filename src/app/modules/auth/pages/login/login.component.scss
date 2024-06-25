@@ -1,0 +1,45 @@
+.login-container {
+  justify-content: center;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  margin-bottom: 4em;
+}
+
+.signin-text {
+  font-size: 14px;
+  margin-top: .5em;
+
+  .signin-link{
+    color: var(--primary-color);
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+
+
+/* Responsive */
+
+@media (min-width: 600px) and (max-width: 960px) {
+  .login-card {
+    width: 80%;
+    padding: 15px;
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1280px) {
+  .login-card {
+    width: 60%;
+    padding: 20px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .login-card {
+    width: 50%;
+    padding: 25px;
+  }
+}

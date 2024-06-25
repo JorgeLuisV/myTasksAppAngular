@@ -1,36 +1,62 @@
-# ATOM FE CHALLENGE TEMPLATE - ANGULAR
+# 📋MyTasksApp Angular
 
-Este proyecto es una plantilla con lo necesario para comenzar a desarrollar el front-end de la aplicación de la prueba técnica de Atom. Se base en Angular con la versión 17.3.6.
-Se ha realizado la instalación y configuración de varias dependencias necesarias para el desarrollo de la aplicación, como por ejemplo: Angular Material.
+MyTasksApp es una aplicación de gestión de tareas diarias desarrollada con Angular y Angular Material.
 
-## Instrucciones
-Siéntete libre de clonar este repositorio y utilizarlo como base para el desarrollo de la aplicación. Sigue las indicates de la prueba técnica para completar la aplicación y desarrolla como más te sientas cómodo.
+## Funcionalidades
 
-De igual manera puedes documentar dentro de este archivo todo lo que deseas contar sobre tu desarrollo, como por ejemplo, decisiones de diseño, problemas encontrados, etc.
+- **Vistas:**
 
-## Comentarios sobre el desarrollo
-...
+  - **Login:** Permite a los usuarios iniciar sesión con su correo electrónico. Si el usuario no está registrado, puede crear una cuenta ingresando su correo.
+  - **Home:** Proporciona una interfaz para que los usuarios gestionen sus tareas. Aquí pueden ver, crear, editar, marcar como completadas o eliminar tareas. Además, existe la opción de filtrar las tareas por estado: pendiente, completado o todas.
 
-## Development server
+- **Protección de rutas:** La aplicación cuenta con protección de rutas para garantizar que solo los usuarios autenticados puedan acceder a la vista principal (home).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Seguridad de sesión:** Se utilizan JSON Web Tokens (JWT) para gestionar la seguridad de la sesión. El token del usuario autenticado se almacena de forma segura en una cookie.
 
-## Code scaffolding
+- **Validación de formularios:** Los formularios de inicio de sesión, registro, creación y edición de tareas están validados para evitar la introducción de valores vacíos o inválidos.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tecnologías utilizadas
 
-## Build
+- Angular
+- Angular Material
+- Font Awesome
+- JSON Web Tokens (JWT)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Requisitos previos
 
-## Running unit tests
+- Node.js
+- Angular CLI
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Instalación
 
-## Running end-to-end tests
+Clona este repositorio:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+  git clone https://github.com/tu-usuario/myTasksAppAngular.git
+```
 
-## Further help
+Navega al directorio del proyecto:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+  cd myTasksAppAngular
+```
+
+Instala las dependencias:
+
+```bash
+  npm install
+```
+
+## Uso
+
+Inicia la aplicación:
+
+```bash
+  ng serve
+```
+
+Abre tu navegador y ve a `http://localhost:4200`
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT. Para más detalles, consulta el archivo [LICENSE](LICENSE).

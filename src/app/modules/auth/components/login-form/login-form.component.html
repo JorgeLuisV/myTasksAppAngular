@@ -1,0 +1,26 @@
+<form [formGroup]="form" novalidate class="login-form" (ngSubmit)="doLogin()">
+  <mat-form-field class="input-full-width">
+    <mat-label>Correo</mat-label>
+    <input
+      type="email"
+      matInput
+      formControlName="email"
+      placeholder="Ejm. johndoe@email.com"
+    />
+    @if (form.controls.email.hasError('email') &&
+    !form.controls.email.hasError('required')) {
+    <mat-error>Ingresa un correo válido</mat-error>
+    } @if (form.controls.email.hasError('required')) {
+    <mat-error>El correo es <strong>requerido</strong></mat-error>
+    } @if (status === 'failed') {
+    <mat-hint class="mat-mdc-form-field-error">El usuario no existe</mat-hint>
+    }
+  </mat-form-field>
+  <app-button
+    typeBtn="submit"
+    [loading]="status === 'loading'"
+    [color]="'primary'"
+    [fullWidth]="true"
+    [text]="'Iniciar sesión'"
+  ></app-button>
+</form>

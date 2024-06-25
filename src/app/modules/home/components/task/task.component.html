@@ -1,0 +1,17 @@
+<div class="task-item" [class.completed]="checked">
+  <div class="task-content">
+    <mat-checkbox
+      class="task-checkbox"
+      [(ngModel)]="checked"
+      (change)="completeTaskToggle($event)"
+    ></mat-checkbox>
+    <div class="task-text" (click)="setTaskData(task)">
+      <p class="task-title">{{ task.title }}</p>
+      <p class="task-description">{{ task.description }}</p>
+      <p class="task-date">{{ task.createdAt | formatDate }}</p>
+    </div>
+  </div>
+  <button mat-icon-button [disabled]="disabled" (click)="deleteTask(task.id)">
+    <fa-icon [icon]="faXmark"></fa-icon>
+  </button>
+</div>

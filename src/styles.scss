@@ -1,4 +1,9 @@
 @import "assets/styles/theme";
 
+:root {
+  --primary-color: #006dd6;
+  --background-color: #f9fafb;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Inter, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,25 @@
+<div class="login-container">
+  <div class="logo-container">
+    <img
+      class="logo"
+      src="../../../assets/images/mytasksapp.png"
+      alt="logo de mytasksapp"
+    />
+    <h1>MyTaskApp</h1>
+  </div>
+
+  <mat-card class="login-card" appearance="raised">
+    <mat-card-header>
+      <mat-card-title>Ingresa a tu cuenta</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <app-login-form></app-login-form>
+    </mat-card-content>
+    <mat-card-footer class="example-card-footer">
+      <p class="signin-text">
+        ¿Todavía no tienes una cuenta?
+        <span class="signin-link" (click)="openDialog()">Regístrate</span>
+      </p>
+    </mat-card-footer>
+  </mat-card>
+</div>

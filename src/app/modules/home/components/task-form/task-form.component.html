@@ -1,0 +1,45 @@
+<form [formGroup]="form" novalidate (ngSubmit)="saveTask()">
+  <h2 mat-dialog-title>Escribe tu tarea</h2>
+  <mat-dialog-content>
+    <mat-form-field class="input-full-width">
+      <mat-label>Tarea</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="title"
+        placeholder="Ejm. Sacar a firulais"
+      />
+      @if (form.controls.title.hasError('required') &&
+      !form.controls.title.hasError('minlength')) {
+      <mat-error>El título es <strong>requerido</strong></mat-error>
+      } @if (form.controls.title.hasError('minlength')) {
+      <mat-error>El título debe tener al menos 3 caracteres</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="input-full-width">
+      <mat-label>Descripción</mat-label>
+      <textarea
+        matInput
+        formControlName="description"
+        placeholder="Ejm. Con correa porque huye"
+      ></textarea>
+      @if (form.controls.description.hasError('minlength')) {
+      <mat-error>La descripción debe tener al menos 3 caracteres</mat-error>
+      }
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions class="dialog-footer">
+    <app-button
+      typeBtn="button"
+      [text]="'Cerrar'"
+      style="margin-right: 0.5rem"
+      mat-dialog-close
+    ></app-button>
+    <app-button
+      typeBtn="submit"
+      [loading]="status === 'loading'"
+      [color]="'primary'"
+      [text]="'Guardar'"
+    ></app-button>
+  </mat-dialog-actions>
+</form>
