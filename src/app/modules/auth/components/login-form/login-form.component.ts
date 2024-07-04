@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { ButtonComponent } from '@shared/components/button/button.component';
 import { AuthService } from '@services/auth.service';
 import { RequestStatus } from '@models/request-status.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-form',
@@ -31,6 +32,7 @@ export class LoginFormComponent {
     email: ['', [Validators.email, Validators.required]],
   });
   status: RequestStatus = 'init';
+  failedMessage = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,8 +51,14 @@ export class LoginFormComponent {
           this.status = 'success';
           this.router.navigate(['/home']);
         },
-        error: () => {
+        error: (err) => {
           this.status = 'failed';
+          if (err instanceof HttpErrorResponse) {
+            this.failedMessage =
+              err.status === 401
+                ? 'El usuario no existe'
+                : 'Error al iniciar sesión, intente nuevamente';
+          }
           this.cdr.detectChanges();
         },
       });

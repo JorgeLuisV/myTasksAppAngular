@@ -25,6 +25,7 @@ import { Router } from '@angular/router';
 import { ButtonComponent } from '@shared/components/button/button.component';
 import { RequestStatus } from '@models/request-status.model';
 import { AuthService } from '@services/auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register-form',
@@ -49,6 +50,7 @@ export class RegisterFormComponent {
     email: ['', [Validators.email, Validators.required]],
   });
   status: RequestStatus = 'init';
+  failedMessage = '';
   readonly dialog = inject(MatDialog);
 
   constructor(
@@ -69,8 +71,14 @@ export class RegisterFormComponent {
           this.dialog.closeAll();
           this.router.navigate(['/home']);
         },
-        error: () => {
+        error: (err) => {
           this.status = 'failed';
+          if (err instanceof HttpErrorResponse) {
+            this.failedMessage =
+              err.status === 401
+                ? 'Ya existe un usuario con ese correo'
+                : 'Error al crear el usuario, intente nuevamente';
+          }
           this.cdr.detectChanges();
         },
       });

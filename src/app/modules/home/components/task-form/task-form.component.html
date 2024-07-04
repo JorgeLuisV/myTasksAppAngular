@@ -14,6 +14,8 @@
       <mat-error>El título es <strong>requerido</strong></mat-error>
       } @if (form.controls.title.hasError('minlength')) {
       <mat-error>El título debe tener al menos 3 caracteres</mat-error>
+      } @if (form.controls.title.hasError('maxlength')) {
+      <mat-error>El título debe tener máximo 100 caracteres</mat-error>
       }
     </mat-form-field>
     <mat-form-field class="input-full-width">
@@ -25,6 +27,8 @@
       ></textarea>
       @if (form.controls.description.hasError('minlength')) {
       <mat-error>La descripción debe tener al menos 3 caracteres</mat-error>
+      } @if (form.controls.description.hasError('maxlength')) {
+      <mat-error>La descripción debe tener máximo 500 caracteres</mat-error>
       }
     </mat-form-field>
   </mat-dialog-content>

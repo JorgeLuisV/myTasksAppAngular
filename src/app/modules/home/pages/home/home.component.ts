@@ -64,10 +64,7 @@ export class HomeComponent {
         })
       )
       .subscribe({
-        error: (err) => {
-          this.status = 'failed';
-          console.error(err);
-        },
+        error: (err) => (this.status = 'failed'),
       });
   }
 

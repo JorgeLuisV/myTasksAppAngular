@@ -42,8 +42,11 @@ import { RequestStatus } from '@models/request-status.model';
 })
 export class TaskFormDialogElements {
   form = this.formBuilder.nonNullable.group({
-    title: ['', [Validators.required, Validators.minLength(3)]],
-    description: ['', [Validators.minLength(3)]],
+    title: [
+      '',
+      [Validators.required, Validators.minLength(3), Validators.maxLength(100)],
+    ],
+    description: ['', [Validators.minLength(3), Validators.maxLength(500)]],
   });
   status: RequestStatus = 'init';
 
@@ -104,8 +107,15 @@ export class TaskFormDialogElements {
             })
           )
           .subscribe({
-            error: (err) => {
-              console.error(err);
+            error: () => {
+              this.status = 'failed';
+              this._snackBar.open(
+                'Hubo un error al guardar la tarea, inténtalo de nuevo',
+                'cerrar',
+                {
+                  duration: 3000,
+                }
+              );
             },
           });
       }

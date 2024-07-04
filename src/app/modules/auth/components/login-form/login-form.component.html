@@ -13,7 +13,7 @@
     } @if (form.controls.email.hasError('required')) {
     <mat-error>El correo es <strong>requerido</strong></mat-error>
     } @if (status === 'failed') {
-    <mat-hint class="mat-mdc-form-field-error">El usuario no existe</mat-hint>
+    <mat-hint class="mat-mdc-form-field-error">{{ failedMessage }}</mat-hint>
     }
   </mat-form-field>
   <app-button

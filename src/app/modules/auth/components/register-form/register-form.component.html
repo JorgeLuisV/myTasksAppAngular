@@ -16,9 +16,7 @@
       } @if (form.controls.email.hasError('required')) {
       <mat-error>El correo es <strong>requerido</strong></mat-error>
       } @if (status === 'failed') {
-      <mat-hint class="mat-mdc-form-field-error"
-        >Ya existe un usuario con ese correo</mat-hint
-      >
+      <mat-hint class="mat-mdc-form-field-error">{{ failedMessage }}</mat-hint>
       }
     </mat-form-field>
   </mat-dialog-content>

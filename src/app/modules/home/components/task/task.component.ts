@@ -37,7 +37,8 @@ export class TaskComponent {
   checked: boolean = false;
   taskDate: string = '';
   readonly faXmark = faXmark;
-  disabled: boolean = false;
+  disabledDel: boolean = false;
+  disabledCheck: boolean = false;
 
   private taskService = inject(TaskService);
   readonly dialog = inject(MatDialog);
@@ -48,19 +49,13 @@ export class TaskComponent {
   }
 
   completeTaskToggle(event: MatCheckboxChange) {
+    this.disabledCheck = true;
     this.task.completed = event.checked;
-
     this.taskService
       .updateTask(this.task.id, { completed: this.task.completed })
-      .pipe(
-        tap(() => {
-          console.log('Task updated successfully');
-        })
-      )
+      .pipe(tap(() => (this.disabledCheck = false)))
       .subscribe({
-        error: (err) => {
-          console.error(err);
-        },
+        error: (err) => (this.disabledCheck = false),
       });
   }
 
@@ -70,20 +65,27 @@ export class TaskComponent {
   }
 
   deleteTask(taskId: string) {
-    this.disabled = true;
+    this.disabledDel = true;
     this.taskService
       .deleteTask(taskId)
       .pipe(
         tap(() => {
-          this.disabled = false;
+          this.disabledDel = false;
           this._snackBar.open('¡La tarea fué eliminada!', 'cerrar', {
             duration: 3000,
           });
         })
       )
       .subscribe({
-        error: (err) => {
-          console.error(err);
+        error: () => {
+          this.disabledDel = false;
+          this._snackBar.open(
+            'Hubo un error al eliminar la tarea, inténtalo de nuevo',
+            'cerrar',
+            {
+              duration: 3000,
+            }
+          );
         },
       });
   }
